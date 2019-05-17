@@ -1,4 +1,5 @@
 # built-in functions
+# details: https://docs.python.org/2.7/library/functions.html
 
 # filter(func, seq): return a seq of items(list, tuple, string...) from the input seq for which func(item) is true
 def f(x): return x.isdigit()
