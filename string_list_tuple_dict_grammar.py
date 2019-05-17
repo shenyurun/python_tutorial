@@ -63,6 +63,22 @@ list1.clear()
 
 list2 = list1 # direct to same list
 list2 = list1[:] # copy a new list
+list2 = list1[::-1] # copy of reversed list1
+list1.reverse() # reverse list1 in place
+
+list1.index('ab') # same as str1.index(str2), raise error if not exists
+list1.count('abc') # count number of times 'abc' appears in list1
+
+
+# list as stack
+list1.append('ab')
+list1.pop()
+# list as queue (not efficiency)
+list1.append('ab')
+list1.pop(0)
+# a more efficient way is to use collections.deque
+# refer to collections_skills.py
+
 
 list2 = sorted(list1) # list1 is not changed
 list2 = sorted(list1, reverse=True)
@@ -160,47 +176,6 @@ dict1.update({'a':10, 'e':20})
 dict1['a']
 dict1.get('a')
 dict1.get('x', -1)
-
-dict1.popitem() # remove an arbitrary (key, value) pair from dict
-dict1.pop('a') # remove given key, and return corresponding value, throw keyerror if key doesn't exist
-dict1.pop('a', -1) # remove given key, and return corresponding value, return default value if key doesn't exist
-del dict1['a'] # remove given key, and return corresponding value, throw keyerror if key doesn't exist
-
-dict1.clear()
-
-
-et1.clear()
-
-# intersection
-set3 = set1 & set2
-set1.intersection(set2)
-# symmetric difference
-set3 = set1 ^ set2
-set1.symmetric_difference(set2)
-# union
-set3 = set1 | set2
-set1.union(set2)
-# difference
-set3 = set1 - set2
-set1.difference(set2)
-
-# is subset
-print set1 <= set2
-print set1.issubset(set2)
-# is superset
-print set1 >= set2
-print set1.issuperset(set2)
-
-
-'''dict'''
-dict1 = {'a':0, 'b':1, 'c':2}
-dict1['d'] = 4
-dict1.update(a=10, e=20)
-dict1.update({'a':10, 'e':20})
-
-dict1['a']
-dict1.get('a')
-dict1.get('x', -1)
 dict1.setdefault('a', 10) # if key exists, return value, if not exists, add (key, value) pair and return the default value
 
 dict1.popitem() # remove an arbitrary (key, value) pair from dict
@@ -209,22 +184,4 @@ dict1.pop('a', -1) # remove given key, and return corresponding value, return de
 del dict1['a'] # remove given key, and return corresponding value, throw keyerror if key doesn't exist
 
 dict1.clear()
-
-
-# built-in functions
-
-# filter(func, seq): return a seq of items(list, tuple, string...) from the input seq for which func(item) is true
-def f(x): return x.isdigit()
-filter(f, ['12','ab','3f'])
-
-# map(func, seq): return the seq of func(item) for each item in input seq
-def f(x): return x**2
-map(f, [1,2,3])
-
-def add(x,y): return x+y
-map(add, [1,2,3], [4,5,6])
-
-# reduce(func, seq): return a single value constructed by calling func(with two params) on the first two items of the sequence
-# then on the result and the next item, and so on.
-reduce(add, range(1,11)) # return sum of [1,2,...,10]
 
