@@ -83,7 +83,8 @@ d = defaultdict(list) # for each key first encountered, an empty list [] has giv
 for k, v in s:
 	d[k].append(v)
 
-# dict.setdefault() is slower than using a defaultdict directly
+# dict.setdefault() is lower than using a defaultdict directly in some condition
+# see end of the document for more details
 d = {}
 for k, v in s:
     d.setdefault(k, []).append(v)
@@ -126,3 +127,16 @@ d # OrderedDict([('c', 3), ('b', 2), ('a', 1)])
 d.popitem() # ('a', 1)
 # pop the item first inserted
 d.popitem(last=False) # ('c', 3)
+
+
+'''
+    1. setdefault is faster and simpler with small data sets;
+    2. defaultdict is faster for larger data sets with more homogenous key sets 
+       (ie, how short the dict is after adding elements);
+    3. setdefault has an advantage with more heterogeneous key sets;
+    4. these results are different for Python 3 vs Python 2;
+    5. OrderedDict is slower in all cases other than an algorithm that depends 
+       on order and order is not easy to reconstruct or sort;
+    6. Python 3 is generally faster for most dict operations;
+    7. Python 3.6's dict is now ordered by insertion order, reducing usefulness of OrderedDict;
+'''
