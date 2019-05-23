@@ -105,3 +105,15 @@ from collections import OrderedDict
 d = {'banana': 3, 'apple': 4, 'pear': 1, 'orange': 2}
 OrderedDict(sorted(d.items(), key=lambda x: -x[1])) # usually work together with sorted()
 OrderedDict(sorted(d.items(), key=lambda x: len(x[0])))
+
+# OrderedDict remembers the order that keys were first inserted
+# deleting an entry and reinserting it will move it to the end
+d = OrderedDict({'a':1, 'b':2, 'c':3}) # OrderedDict([('a', 1), ('c', 3), ('b', 2)])
+val = d.pop('a') # pop value of 'a'
+d['a'] = val # update the entry of 'a', will lead ('a',1) move to the end of dict
+d # OrderedDict([('c', 3), ('b', 2), ('a', 1)])
+
+# pop the item last inserted
+d.popitem() # ('a', 1)
+# pop the item first inserted
+d.popitem(last=False) # ('c', 3)
