@@ -107,8 +107,17 @@ OrderedDict(sorted(d.items(), key=lambda x: -x[1])) # usually work together with
 OrderedDict(sorted(d.items(), key=lambda x: len(x[0])))
 
 # OrderedDict remembers the order that keys were first inserted
+d = OrderedDict()
+d['a'] = 1
+d['c'] = 3
+d['b'] = 2
+d # OrderedDict([('a', 1), ('c', 3), ('b', 2)])
+
+# overwriting an existing entry, the original insertion position is left unchanged
+d['a'] = 1
+d # OrderedDict([('a', 1), ('c', 3), ('b', 2)])
+
 # deleting an entry and reinserting it will move it to the end
-d = OrderedDict({'a':1, 'b':2, 'c':3}) # OrderedDict([('a', 1), ('c', 3), ('b', 2)])
 val = d.pop('a') # pop value of 'a'
 d['a'] = val # update the entry of 'a', will lead ('a',1) move to the end of dict
 d # OrderedDict([('c', 3), ('b', 2), ('a', 1)])
