@@ -22,3 +22,10 @@ heapq.nlargest(3, it)
 
 # return a list of n smallest elements from iterable
 heapq.nsmallest(3, it)
+
+# To maintain objects in the heap, we can store (priority, task) tuples in the heap
+pq = []
+heappush(pq, (10, task1))
+heappush(pq, (5, task2))
+heappush(pq, (15, task3))
+priority, task = heappop(pq)
