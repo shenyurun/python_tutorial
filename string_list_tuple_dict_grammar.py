@@ -11,6 +11,8 @@ str1.islower()
 str1.isupper()
 
 str1.find(str2) #return -1 if not found
+str1.find(str2, 2) # find str2 in str1[2:]
+str1.find(str2, 2, 10) # find str2 in str1[2:10]
 str1.index(str2) #throw exception if not found
 
 str1.replace(' ', '-')
