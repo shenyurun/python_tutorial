@@ -5,6 +5,7 @@ heap = heapq.heapify(a)
 
 heapq.heappush(heap, 6)
 x = heapq.heappop(heap)
+heap[0] # get smallest item without pop
 
 # push item on the heap, then pop the smallest from the heap
 x = heapq.heappushpop(heap, 7)
